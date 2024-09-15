@@ -1,0 +1,121 @@
+<html lang="en">
+
+</html>
+
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>edit employee</title>
+    <!-- custom css -->
+    <link rel="stylesheet" href="">
+
+    <!-- bootstrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <!-- all section start -->
+    <section class="mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- option button -->
+                <div class="col-lg-2 col-md-2 border">
+                    <div class="border m-2">
+                        <button class="btn d-flex align-items-center gap-2" type="button"
+                            onclick='location.href="http://127.0.0.1:8000"'>
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                            <div>Home</div>
+                        </button>
+                    </div>
+                    <div class="border m-2">
+                        <button class="btn d-flex align-items-center gap-2" type="button"
+                            onclick='location.href="http://127.0.0.1:8000/employees/"'>
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            <div>Employees</div>
+                        </button>
+                    </div>
+                    <div class="border m-2">
+                        <button class="btn d-flex align-items-center gap-2" type="button"
+                            onclick='location.href="http://127.0.0.1:8000/add-employee"'>
+                            <i class="fas fa-user-tie" aria-hidden="true"></i>
+                            <div>Add Employee</div>
+                        </button>
+                    </div>
+                </div>
+                <!-- search and date show section -->
+                <div class="col-lg-10 col-md-10 border">
+
+                    <!-- data visualization section -->
+                    <div class="mt-2">
+                        <table class="table table-bordered w-100">
+                            <thead>
+                                <tr>
+                                    <td>Photo</td>
+                                    <td>Full Name</td>
+                                    <td>Birthdate</td>
+                                    <td>Email</td>
+                                    <td>Mobile</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <form action="{% url 'edit-employee' employee.id %}" method="POST"
+                                    enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <tr>
+                                        <!-- Other fields for employee data -->
+                                        <td>
+                                            <label for="currentImage">Current Image:</label><br>
+                                            <img src="{{ employee.imageFile.url }}" alt="Employee Image"
+                                                class="img-fluid" style="max-width: 150px; max-height: 150px;"><br>
+
+                                            <!-- New image field for uploading -->
+                                            <label for="imageFile">Upload New Image:</label>
+                                            <input type="file" name="imageFile">
+
+                                        </td>
+                                        <td>
+                                            <input type="text" name="empName" value="{{ employee.empName }}" required>
+                                        </td>
+                                        <td>
+                                            <input type="date" name="empBirthDate" value="{{ employee.empBirthDate }}"
+                                                required>
+                                        </td>
+                                        <td>
+                                            <input type="email" name="empEmail" value="{{ employee.empEmail }}"
+                                                required>
+                                        </td>
+                                        <td>
+                                            <input type="text" name="empNum" value="{{ employee.empNum }}" required>
+                                        </td>
+                                    </tr>
+                                    <button type="submit" class="bg-primary text-white">Update Employee</button>
+                                </form>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function popup(employeeId) {
+            let popVariable = document.getElementById("pop-" + employeeId);
+            popVariable.style.display = "block";
+        }
+
+        function cancel(employeeId) {
+            let cancelVariable = document.getElementById("pop-" + employeeId);
+            cancelVariable.style.display = "none";
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"> </script>
+</body>
+
+</html>
