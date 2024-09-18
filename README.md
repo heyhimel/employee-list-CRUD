@@ -1,3 +1,5 @@
+This web project is built with Django and PostgreSQL. This project will allow you to insert, delete, update, sort and read data( Name, Birthdate, Picture, Email and Mobile number) with pagination.
+
 1. To run this project, you have to follow this instructions
 2. Virtual environment creation=>
 3. Open cmd and type
