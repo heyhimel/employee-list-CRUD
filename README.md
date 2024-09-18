@@ -11,9 +11,12 @@ in cmd "pip install Pillow"
 6. Now install PostgreSQL for database, do yourself
 Install psycopg2 "pip install psycopg2"
 7. Database connection with PostgreSQL
-8. Go to "assignment" folder
-9. In cmd "python manage.py makemigrations"
-10. In cmd "python manage.py migrate"
-11. Now you are ready to go
-12. Run your server from cmd
+   7.1 Create database by typing in cmd line "createdb -U your_database_user your_database_name"
+   7.2 write password "1234"
+   7.3 database name "employee"
+9. Go to "assignment" folder
+10. In cmd "python manage.py makemigrations"
+11. In cmd "python manage.py migrate"
+12. Now you are ready to go
+13. Run your server from cmd
 Type "python manage.py runserver"
